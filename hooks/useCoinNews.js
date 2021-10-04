@@ -7,7 +7,7 @@ const useCoinNews = id => {
   const getData = async currencyId => {
     if (loading) return
     setLoading(true)
-    const apiToken = 'a78e43bd00d7e7e364226e3caa1202155050e808'
+    const apiToken = ''
 
     const url = `https://cryptopanic.com/api/v1/posts/?auth_token=${apiToken}&currencies=${currencyId}`
 
