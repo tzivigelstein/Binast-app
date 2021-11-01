@@ -15,6 +15,7 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
+    "plugins": ["@config-plugins/android-jsc-intl"],
     "ios": {
       "supportsTablet": true,
       "userInterfaceStyle": "automatic"
