@@ -4,15 +4,13 @@ import numbro from 'numbro'
 
 export default function parseCryptos(cryptos) {
   const parsedCryptos = cryptos.map(({ RAW, CoinInfo, DISPLAY }) => {
-    const {
-      USD: { IMAGEURL, PRICE, MKTCAP, CHANGEPCTDAY, OPENDAY, VOLUMEHOUR, LOWDAY, HIGHDAY },
-    } = RAW
+    const { USD: RAW_USD } = RAW
+    const { IMAGEURL, PRICE, MKTCAP, CHANGEPCTDAY, OPENDAY, VOLUMEHOUR, LOWDAY, HIGHDAY } = RAW_USD
 
     const { Name, FullName } = CoinInfo
 
-    const {
-      USD: { FROMSYMBOL },
-    } = DISPLAY
+    const { USD: DISPLAY_USD } = DISPLAY
+    const { FROMSYMBOL } = DISPLAY_USD
 
     const imageUrl = `https://www.cryptocompare.com/${IMAGEURL.slice(1)}`
 
