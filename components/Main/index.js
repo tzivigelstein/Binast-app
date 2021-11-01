@@ -39,8 +39,8 @@ const Main = () => {
   } = selectedCrypto
 
   const bottomSheetRef = useRef(null)
-  const chartData = useCoinHistory(id)
-  const [coinNews, getData] = useCoinNews(id)
+  const [chartData, getChartData] = useCoinHistory(id)
+  const [coinNews, getCoinNews] = useCoinNews(id)
 
   const [priceArrowOrientation, setPriceArrowOrientation] = useState('flat')
   const [priceColor, setPriceColor] = useState(theme.success)
@@ -57,15 +57,12 @@ const Main = () => {
   const handleBottomSheetChange = useCallback(
     index => {
       if (index === 2) {
-        getData(id)
       } else {
         console.log('ya hay info, o no se abrio el sheet al lvl 2')
       }
     },
     [id]
   )
-
-  console.log('main', { coinNews })
 
   const snapPoints = useMemo(() => ['25%', '60%', '90%'], [])
 
@@ -80,8 +77,6 @@ const Main = () => {
     else if (status === priceStatus.PRICE_DOWN) return 'down'
     else return 'flat'
   }
-
-  // console.log({ coinNews })
 
   return (
     <Container>
@@ -102,7 +97,7 @@ const Main = () => {
         detached={true}
         onClose={handleBottomSheetClose}
       >
-        <View style={{ paddingHorizontal: 16 }}>
+        <View style={{ paddingHorizontal: 16, paddingVertical: 8 }}>
           <Shadow
             viewStyle={styles.image}
             safeRender={true}
@@ -157,12 +152,14 @@ const Main = () => {
               <Text style={styles.rowTextData}>{volumeHour}</Text>
             </View>
           </View>
-          <BottomSheetFlatList
-            data={coinNews}
-            keyExtractor={({ id }) => id}
-            renderItem={({ item }) => <NewItem item={item} />}
-            contentContainerStyle={{}}
-          />
+          {coinNews.length !== 0 && (
+            <View style={styles.newsContainer}>
+              <Text style={styles.newsTitle}>News</Text>
+              {coinNews.map(newItem => (
+                <NewItem key={newItem.id} item={newItem} />
+              ))}
+            </View>
+          )}
         </BottomSheetScrollView>
       </BottomSheet>
     </Container>
