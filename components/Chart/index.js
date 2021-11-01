@@ -11,9 +11,9 @@ import {
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import useTheme from '../../hooks/useTheme'
 
-const { width: WIDTH_SIZE } = Dimensions.get('window')
+const { width: WIDTH_SIZE, height } = Dimensions.get('window')
 
-const aspectRatio = 0.5625
+const aspectRatio = WIDTH_SIZE / height
 
 const buttons = [
   { title: 'ONE_YEAR', display: '1Y', time: 365 },
