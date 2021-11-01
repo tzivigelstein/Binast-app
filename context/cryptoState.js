@@ -19,7 +19,7 @@ const CryptoState = ({ children }) => {
   const [state, dispatch] = useReducer(cryptoReducer, initialState)
 
   useEffect(() => {
-    getMostCapitalizedCryptos(10)
+    getMostCapitalizedCryptos(9)
   }, [])
 
   const getMostCapitalizedCryptos = async (limit, currency = DEFAULT_CURRENCY) => {
