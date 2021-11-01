@@ -74,6 +74,17 @@ const styleCreator = theme =>
       fontWeight: 'bold',
       fontSize: 17,
     },
+
+    newsContainer: {
+      paddingHorizontal: 16,
+    },
+
+    newsTitle: {
+      fontSize: 21,
+      fontWeight: 'bold',
+      color: theme.text,
+      marginBottom: 6,
+    },
   })
 
 export default styleCreator
