@@ -4,10 +4,10 @@ const useCoinHistory = id => {
   const [chartData, setChartData] = useState([])
 
   useEffect(() => {
-    getCryptoHistory(id)
+    id && getChartData(id)
   }, [id])
 
-  const getCryptoHistory = async (id = 'BTC') => {
+  const getChartData = async (id = 'BTC') => {
     const oneYear = 365
     const url = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=${id}&tsym=USD&limit=${oneYear}`
 
